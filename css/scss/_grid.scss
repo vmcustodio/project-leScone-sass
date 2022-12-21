@@ -1,0 +1,53 @@
+// body {
+//   padding: 0px;
+//   margin: 0px;
+// }
+
+// .container {
+//   width: 1200px;
+//   margin: 0 auto;
+
+//   &::after, &::before {
+//     content: '';
+//     display: table;
+//     clear: both;
+//   }
+// }
+
+// .grid-3 {
+//   width: calc(25% - 20px); // mantem os 20px de margin e padding ao diminuir a tela
+//   margin-left: 10px;
+//   margin-right: 10px;
+//   background: rgba(0,0,0,0.5);
+//   color: white;
+//   float: left;
+// }
+
+// Variaveis do grid
+$cols: 12;
+$gutter: 20px;
+$l-device: 1200px;
+$m-device: 760px;
+$s-device: 480px;
+
+//Box sizing
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+// mixins de media-querie
+@mixin d($size) {
+  @if $size == l {
+    @media screen and (min-width: #{$l-device}) {
+      @content;
+    }
+  } @else if $size == m {
+    @media screen and (min-width: #{$m-device}) and (max-width: #{$l-device - 1 }) {
+      @content;
+    }
+  } @else if $size == s {
+    @media screen and (max-width: #{$m-device - 1}) {
+      @content;
+    }
+  }
+}
